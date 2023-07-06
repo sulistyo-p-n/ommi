@@ -765,4 +765,4 @@ function setSocket() {
 resizeView();
 setOri();
 refreshLayoutView();
-setSocket();
+// setSocket();
