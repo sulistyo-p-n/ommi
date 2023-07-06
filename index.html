@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+
+		<title>OMMI</title>
+		<meta name="description" content="OMMI Description" />
+		<meta name="author" content="Sulistyo Ponco Nugroho" />
+
+		<meta property="og:title" content="OMMI" />
+		<meta property="og:type" content="website" />
+		<!-- <meta property="og:url" content="https://www.u.io/OMMI/"> -->
+		<meta
+			property="og:description"
+			content="OMMI by Sulistyo Ponco Nugroho"
+		/>
+		<meta property="og:image" content="/favicon/apple-touch-icon.png" />
+
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/favicon/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+
+		<link rel="stylesheet" href="css/styles.css?v=0.1" />
+	</head>
+
+	<body>
+		<div class="flex-container">
+			<div class="flex-child left-container">
+				<header>
+					<img class="client" src="/client.png" alt="LOGO LRS" />
+					<button hidden>Menu</button>
+					<div class="search">
+						<input
+							id="searchInput"
+							type="text"
+							placeholder="Search"
+						/>
+						<ul id="searchList"></ul>
+					</div>
+				</header>
+				<main id="content" />
+				<div class="controller">
+					<button id="filterButton">
+						<img
+							src="/image/filter_alt_FILL0_wght400_GRAD0_opsz48.svg"
+						/>
+					</button>
+					<button id="alarmButton">
+						<img
+							src="/image/notifications_active_FILL0_wght400_GRAD0_opsz48.svg"
+						/>
+					</button>
+					<span class="block"></span>
+					<button id="oriButton">
+						<img
+							src="/image/fullscreen_FILL0_wght400_GRAD0_opsz48.svg"
+						/>
+					</button>
+					<button id="plusButton">
+						<img src="/image/add_FILL0_wght400_GRAD0_opsz48.svg" />
+					</button>
+					<button id="minusButton">
+						<img
+							src="/image/remove_FILL0_wght400_GRAD0_opsz48.svg"
+						/>
+					</button>
+				</div>
+				<footer>
+					<div>
+						<span id="status">by Sulistyo Ponco Nugroho</span><br />
+						Ver. 0.0.0.0 OMMI © 2023 LRS ALL RIGHTS RESERVED
+					</div>
+					<div>
+						<img class="logo" src="/logo.png" alt="LOGO OMMI" />
+					</div>
+				</footer>
+			</div>
+			<div id="rightSideMenu" class="flex-child right-container" hidden>
+				<header>
+					<span id="rightTitle">Bundaran HI - Dwelling Time</span
+					><button id="rightCloseButton">X</button>
+				</header>
+				<div id="rightContent" class="content">
+					<div class="sticky head">Trayek</div>
+					<ul>
+						<li>
+							<span class="name">Trayek 1</span>
+							<span class="value">59:59</span>
+						</li>
+						<li>
+							<span class="name">Trayek 2</span>
+							<span class="value">59:59</span>
+						</li>
+						<li>
+							<span class="name">Trayek 3</span>
+							<span class="value">59:59</span>
+						</li>
+					</ul>
+					<div class="sticky head">PSD - 1</div>
+					<ul>
+						<li>
+							<span class="name">Average</span>
+							<span class="value">59:59</span>
+						</li>
+						<li>
+							<span class="name">Longest</span>
+							<span class="value">59:59</span>
+						</li>
+						<li>
+							<span class="name">Shortest</span>
+							<span class="value">59:59</span>
+						</li>
+					</ul>
+				</div>
+				<footer></footer>
+			</div>
+			<div id="toast">
+				<div id="img">
+					<img
+						src="/image/notifications_active_FILL0_wght400_GRAD0_opsz48.svg"
+					/>
+				</div>
+				<div id="toastDesc">Sulistyo Ponco Nugroho</div>
+			</div>
+		</div>
+
+		<!-- <script src="/jquery/dist/jquery.js"></script> -->
+		<!-- <script src="/socket.io/socket.io.min.js"></script> -->
+		<!-- <script src="/pixi.js/dist/pixi.min.js"></script> -->
+
+		<script src="/js/jqueryClickAndHold/jquery.click-hold.min.js"></script>
+
+		<!-- <script src="/js/ommi/ommi.js"></script> -->
+		<!-- <script src="/js/ommi/ommi.add.trans-line.js"></script> -->
+		<!-- <script src="/js/ommi/ommi.add.trans-point.js"></script> -->
+
+		<!-- <script src="/js/base.js"></script> -->
+		<!-- <script src="/js/data.js"></script> -->
+	</body>
+</html>
