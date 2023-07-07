@@ -1,2 +1,2 @@
-# ommi
+# OMMI
 Online Man Machine Interface
