@@ -46,7 +46,7 @@
 		<div class="flex-container">
 			<div class="flex-child left-container">
 				<header>
-					<img class="client" src="client.png" alt="LOGO LRS" />
+					<!-- <img class="client" src="client.png" alt="LOGO LRS" /> -->
 					<button hidden>Menu</button>
 					<div class="search">
 						<input
@@ -95,7 +95,13 @@
 				</footer>
 			</div>
 			<div id="rightSideMenu" class="flex-child right-container" hidden>
-				<p style="text-align:center; color:gray">Loading...</p>
+				<header>
+					<span id="rightTitle">Loading...</span
+					><button id="rightCloseButton">X</button>
+				</header>
+				<div id="rightContent" class="content">
+				</div>
+				<footer></footer>
 			</div>
 			<div id="toast">
 				<div id="img">
