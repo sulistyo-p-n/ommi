@@ -204,13 +204,13 @@ function moveViewTo(x, y, w, h) {
 }
 
 function setOri() {
-	// oriPoint.x = 73.415;
-	// oriPoint.y = -59.793;
-	// scale = zoomFactor = prevZoomFactor = 0.218;
+	oriPoint.x = 0.0;
+	oriPoint.y = 0.0;
+	scale = zoomFactor = prevZoomFactor = 1.0;
 
-	scale = zoomFactor = prevZoomFactor = app.screen.width / (4200 * 2);
-	oriPoint.x = -4020 * scale + app.screen.width / 2;
-	oriPoint.y = -2744.465 * scale + app.screen.height / 2;
+	// scale = zoomFactor = prevZoomFactor = app.screen.width / (4200 * 2);
+	// oriPoint.x = -4020 * scale + app.screen.width / 2;
+	// oriPoint.y = -2744.465 * scale + app.screen.height / 2;
 
 	refreshLayoutView();
 }
@@ -237,7 +237,7 @@ function setZoom(delta, x, y) {
 	let mX = x;
 	let mY = y;
 
-	zoomFactor = zoomFactor <= 1.5 ? zoomFactor : 1.5;
+	zoomFactor = zoomFactor <= 2.0 ? zoomFactor : 2.0;
 
 	oriPoint.x = mX - ((mX - oriPoint.x) / prevZoomFactor) * zoomFactor;
 	oriPoint.y = mY - ((mY - oriPoint.y) / prevZoomFactor) * zoomFactor;
@@ -255,9 +255,9 @@ function refreshLayoutView() {
 			app.screen.height,
 			scale
 		);
-		if (!layoutObject.isFiltered()) {
-			layoutObject.hide();
-		}
+		// if (!layoutObject.isFiltered()) {
+		// 	layoutObject.hide();
+		// }
 	}
 	for (const legendObject of legendObjects) {
 		legendObject.reDraw(

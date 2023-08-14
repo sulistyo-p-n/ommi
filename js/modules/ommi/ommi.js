@@ -188,6 +188,8 @@ class Style {
 		this.isFontItalic = false;
 		this.textAnchor = new Anchor(0.5, 0.5);
 		this.isReadable = true;
+		this.isTextCrop = false;
+		this.isTextAutoScroll = false;
 
 		this.lastFillTexture = null;
 		this.lastFillScale = 1.0;
@@ -220,6 +222,8 @@ class Style {
 		style.isFontItalic = this.isFontItalic;
 		style.textAnchor = new Anchor(this.textAnchor.h, this.textAnchor.v);
 		style.isReadable = this.isReadable;
+		style.isTextCrop = this.isTextCrop;
+		style.isTextAutoScroll = this.isTextAutoScroll;
 
 		return style;
 	}
@@ -393,6 +397,10 @@ class DrawObject extends BaseObject {
 		return this.baseStyle;
 	}
 
+	getTextWidth() {
+		
+	}
+
 	setShape(obj, scale) {
 		obj.drawRect(
 			0.0,
@@ -403,7 +411,7 @@ class DrawObject extends BaseObject {
 	}
 
 	setFill(activeStyle, scale) {
-		if (activeStyle.isUseFill) {
+		if (activeStyle.isUseFill || activeStyle.isTextCrop) {
 			if (!Array.isArray(activeStyle.fillColor)) {
 				this.obj.beginFill(
 					activeStyle.fillColor,
@@ -502,6 +510,10 @@ class DrawObject extends BaseObject {
 				FontStyle: activeStyle.isFontItalic ? "italic" : "normal",
 				fontWeight: activeStyle.isFontBold ? "bold" : "normal",
 			});
+			
+			if (activeStyle.isTextCrop) {
+				this.objText.mask = this.obj;
+			}
 		}
 	}
 
@@ -519,9 +531,14 @@ class DrawObject extends BaseObject {
 	}
 
 	setTextPosition(ori, activeStyle, scale) {
+		const canvas = document.createElement("canvas");
+		const ctx = canvas.getContext('2d');
+		ctx.font = (activeStyle.isFontBold ? "bold " : "") + (activeStyle.fontSize * 1.3) + "px " + activeStyle.fontFamily;
+		let text = ctx.measureText(activeStyle.text);
+
 		let h = this.anchor.h;
 		let v = this.anchor.v;
-		let th = activeStyle.textAnchor.h;
+		let th = (activeStyle.isTextAutoScroll && text.width > this.getWidth()) ? 0.0 : activeStyle.textAnchor.h;
 		let tv = activeStyle.textAnchor.v;
 		let a = this.a;
 
@@ -547,8 +564,18 @@ class DrawObject extends BaseObject {
 		const tl = Math.sqrt(dX * dX + dY * dY);
 		const ta = Math.atan2(dY, dX);
 
-		const textX = tl * Math.cos(a + ta);
-		const textY = tl * Math.sin(a + ta);
+		let addX = 0;
+		let addY = 0;
+		if (activeStyle.isTextAutoScroll && text.width > this.getWidth()) {
+			if (this.startTime == null) this.startTime = new Date();
+			const currentDate = new Date();
+			const ms = currentDate.getTime() - this.startTime.getTime();
+			const move = (ms / 1000 * 60) % (this.getWidth() + text.width);
+			addX = ((this.getWidth() - move) * scale)* Math.cos(a);
+			addY = ((this.getWidth() - move) * scale)* Math.sin(a);
+		}
+		const textX = tl * Math.cos(a + ta) + addX;
+		const textY = tl * Math.sin(a + ta) + addY;
 		this.objText.position.set(currenPoint.x + textX, currenPoint.y + textY);
 		this.objText.rotation = a;
 		this.objText.anchor.set(th, tv);
