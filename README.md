@@ -1,5 +1,4 @@
-# OMMI
-Online Man Machine Interface
+# OMMI (Online Man Machine Interface)
 This page is a recreation of my previous projects that I have worked on or am currently working on.
 The projects displayed here do not use the actual programming languages or tools employed in each respective project.
 All the visuals on this page were created using my tool, OMMI, based on the PIXI.js library.
