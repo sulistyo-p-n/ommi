@@ -1197,6 +1197,7 @@ function refreshData() {
 
 setInterval(function() {
     refreshDatas();
+    refreshLayoutView();
 }, 1000 * 5);
 
 // app.ticker.add(() => {
