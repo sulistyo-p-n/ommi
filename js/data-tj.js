@@ -1196,7 +1196,7 @@ function refreshData() {
 }
 
 setInterval(function() {
-    refreshDatas();
+    refreshData();
     refreshLayoutView();
 }, 1000 * 5);
 
