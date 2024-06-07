@@ -1195,12 +1195,12 @@ function refreshData() {
     }
 }
 
-// setInterval(function() {
-//     refreshData();
-//     refreshLayoutView();
-// }, 1000 * 5);
-
-app.ticker.add(() => {
+setInterval(function() {
     refreshData();
     refreshLayoutView();
-});
+}, 1000 * 5);
+
+// app.ticker.add(() => {
+//     refreshData();
+//     refreshLayoutView();
+// });
